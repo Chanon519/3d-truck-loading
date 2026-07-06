@@ -1,26 +1,110 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f3f5f9; /* soft cool canvas — lets white cards read */
+  --foreground: #132c37; /* dark theme teal-slate */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* ===== Cohere-navy palette ===== */
+  /* Legacy Shade token NAMES kept, VALUES remapped to #2e6c87 theme → whole app re-skins */
+  --color-charcoal-ink: #132c37; /* dark theme teal — primary text, active nav */
+  --color-pure-white: #ffffff;
+  --color-bone: #f0f4f6; /* cool stone with slight teal hint — subtle fills, hover, input bg */
+  --color-cutout-gray: #edf2f5; /* softest card containment line */
+  --color-slate-mid: #5a7380; /* muted body text / metadata */
+  --color-hairline: #d2dee3; /* standard borders + dividers */
+  --color-deep-charcoal: #255469; /* stronger hover/active border */
+  --color-logo-violet: #2e6c87; /* primary theme brand */
+  --color-lavender-trace: #e7eff2; /* pale theme wash — featured ring / selected tint */
+
+  /* New theme semantic tokens */
+  --color-navy: #2e6c87; /* primary brand */
+  --color-navy-deep: #204b5e; /* maritime band */
+  --color-navy-ops: #132c37; /* operations band */
+  --color-ink: #0f232c;
+  --color-canvas: #ffffff;
+  --color-soft-stone: #f0f4f6;
+  --color-muted: #7994a3;
+  --color-border-light: #e1e9ed;
+
+  /* Operational accent + info */
+  --color-orange: #f97316; /* high-priority ops: Optimize / Dispatch / Assign / urgent */
+  --color-orange-strong: #ea6a0c;
+  --color-orange-soft: #fdba74;
+  --color-orange-wash: #fff3ea; /* pale surface for optimize / selected-op states */
+  --color-action-blue: #2563eb; /* links & information */
+  --color-focus-blue: #3b82f6; /* focus ring */
+  --color-info-wash: #eef6ff;
+
+  /* Radius — Cohere scale */
+  --radius-tabs: 4px;
+  --radius-cards: 16px;
+  --radius-inputs: 8px;
+  --radius-buttons: 9999px; /* pill CTA */
+  --radius-smallchips: 4px;
+  --radius-secondarybuttons: 10px;
+
+  /* Shadows — flat / border-driven, no heavy offset (Cohere is calm) */
+  --shadow-subtle: 0 1px 2px 0 rgba(15, 23, 42, 0.12);
+  --shadow-subtle-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.08);
+  --shadow-subtle-2: 0 1px 2px 0 rgba(15, 23, 42, 0.06);
+  --shadow-subtle-2-sm: 0 1px 1px 0 rgba(15, 23, 42, 0.05);
+  --shadow-sm-shade: 0 1px 3px 0 rgba(15, 23, 42, 0.1);
+  --shadow-card: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-overlay: 0 16px 48px -12px rgba(15, 23, 42, 0.22);
+
+  /* Type scale — tight, measured (navy "carved" feel) */
+  --text-caption: 12px;
+  --text-caption--line-height: 1.2;
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 1.29;
+  --text-body: 16px;
+  --text-body--line-height: 1.5;
+  --text-subheading: 20px;
+  --text-subheading--line-height: 1.4;
+  --text-subheading--letter-spacing: -0.2px;
+  --text-heading-sm: 24px;
+  --text-heading-sm--line-height: 1.3;
+  --text-heading-sm--letter-spacing: -0.36px;
+  --text-heading: 32px;
+  --text-heading--line-height: 1.15;
+  --text-heading--letter-spacing: -0.9px;
+
+  /* ฟอนต์: Google Sans ทั้งระบบ (รองรับ thai subset ในตัว) */
+  --font-sans: var(--font-google-sans), "Google Sans", ui-sans-serif,
+    system-ui, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", "Menlo", monospace;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+/* Accessible keyboard focus baseline (navy-safe blue ring) */
+:focus-visible {
+  outline: 2px solid var(--color-focus-blue);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(37, 99, 235, 0.16);
+}
+
+/* แถบเลื่อนแบบบางสำหรับ panel ภายใน demo */
+.thin-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-hairline);
+  border-radius: 9999px;
+}
+.thin-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
 }
