@@ -345,6 +345,7 @@ export default function JobsPage() {
       )}
 
       <CreatePlanModal
+        key={planModalOpen ? "plan-open" : "plan-closed"}
         open={planModalOpen}
         jobs={selectedJobs}
         onClose={() => setPlanModalOpen(false)}

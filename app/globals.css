@@ -74,8 +74,7 @@
   --text-heading--line-height: 1.15;
   --text-heading--letter-spacing: -0.9px;
 
-  /* ฟอนต์: Google Sans ทั้งระบบ (รองรับ thai subset ในตัว) */
-  --font-sans: var(--font-google-sans), "Google Sans", ui-sans-serif,
+  --font-sans: var(--font-google-sans), "Noto Sans Thai", ui-sans-serif,
     system-ui, sans-serif;
   --font-mono: ui-monospace, "SFMono-Regular", "Menlo", monospace;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 // Modal สร้างแผนจากงานที่เลือกไว้ในหน้าจัดการงาน
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Boxes, Container, ArrowRightLeft, Sparkles } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type { Job, JobType } from "@/lib/types";
@@ -40,12 +40,7 @@ export function CreatePlanModal({
   onClose: () => void;
   onConfirm: (name: string) => void;
 }) {
-  const [name, setName] = useState("");
-
-  // ตั้งชื่อเริ่มต้นใหม่ทุกครั้งที่เปิด modal
-  useEffect(() => {
-    if (open) setName(defaultPlanName());
-  }, [open]);
+  const [name, setName] = useState(() => defaultPlanName());
 
   const counts = useMemo(() => {
     const byType = (t: JobType) => jobs.filter((j) => j.type === t).length;

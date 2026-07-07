@@ -288,6 +288,7 @@ export default function PlanWorkspacePage() {
 
       {/* ---------- picker รถ ---------- */}
       <AssignModal
+        key={`truck-${truckTarget?.jobId ?? "none"}`}
         open={truckTarget !== null}
         title={`จัดรถ — ${jobMap.get(truckTarget?.jobId ?? "")?.jobNo ?? ""}`}
         description={
@@ -311,6 +312,7 @@ export default function PlanWorkspacePage() {
 
       {/* ---------- picker คนขับ ---------- */}
       <AssignModal
+        key={`driver-${driverTarget?.jobId ?? "none"}`}
         open={driverTarget !== null}
         title={`เลือกคนขับ — ${jobMap.get(driverTarget?.jobId ?? "")?.jobNo ?? ""}`}
         description="เลือกคนขับที่พร้อมรับงาน"

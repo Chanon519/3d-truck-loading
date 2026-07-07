@@ -315,6 +315,7 @@ export default function GeneralJobsPage() {
 
       {/* Modal มอบหมายรถ */}
       <AssignModal
+        key={`vehicle-${assignTarget?.job.id ?? "none"}`}
         open={assignTarget?.kind === "vehicle"}
         title={`มอบหมายรถ — ${assignTarget?.job.jobNo ?? ""}`}
         description="เลือกรถที่พร้อมใช้งานเพื่อมอบหมายให้งานนี้"
@@ -328,6 +329,7 @@ export default function GeneralJobsPage() {
 
       {/* Modal มอบหมายคนขับ */}
       <AssignModal
+        key={`driver-${assignTarget?.job.id ?? "none"}`}
         open={assignTarget?.kind === "driver"}
         title={`มอบหมายคนขับ — ${assignTarget?.job.jobNo ?? ""}`}
         description="เลือกคนขับที่พร้อมรับงานเพื่อมอบหมายให้งานนี้"
@@ -341,6 +343,7 @@ export default function GeneralJobsPage() {
 
       {/* Modal รายงานปัญหา */}
       <ProblemModal
+        key={problemJob?.id ?? "problem-closed"}
         open={problemJob !== null}
         jobNo={problemJob?.jobNo ?? ""}
         onClose={() => setProblemJob(null)}

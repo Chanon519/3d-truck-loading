@@ -1,7 +1,7 @@
 "use client";
 
 // Modal เลือกทรัพยากร (รถ / คนขับ) เพื่อมอบหมายให้งานทั่วไป
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CircleCheck, SearchX } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -39,11 +39,6 @@ export function AssignModal({
   onConfirm: (optionId: string) => void;
 }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
-
-  // เคลียร์ตัวเลือกทุกครั้งที่เปิด modal ใหม่
-  useEffect(() => {
-    if (open) setSelectedId(null);
-  }, [open]);
 
   return (
     <Modal

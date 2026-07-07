@@ -1,7 +1,7 @@
 "use client";
 
 // Modal รายงานปัญหาของงาน — กรอกรายละเอียดแล้วเปลี่ยนสถานะงานเป็น "มีปัญหา"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { TriangleAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
@@ -18,11 +18,6 @@ export function ProblemModal({
   onConfirm: (problemText: string) => void;
 }) {
   const [text, setText] = useState("");
-
-  // เคลียร์ข้อความทุกครั้งที่เปิด modal ใหม่
-  useEffect(() => {
-    if (open) setText("");
-  }, [open]);
 
   return (
     <Modal
