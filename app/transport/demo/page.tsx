@@ -135,35 +135,35 @@ function TopRankList({
   return (
     <Card>
       <CardHeader title={title} subtitle={subtitle} />
-      <ul className="divide-y divide-slate-100 px-5">
+      <ul className="divide-y divide-hairline px-5">
         {rows.map((row, i) => (
           <li key={row.id} className="flex items-center gap-3 py-3">
             <div
               className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${
-                i === 0 ? "bg-amber-50" : "bg-slate-100"
+                i === 0 ? "bg-amber-50" : "bg-bone"
               }`}
             >
               {i === 0 ? (
                 <Trophy className="h-4 w-4 text-amber-500" />
               ) : (
-                <span className="text-sm font-semibold text-slate-500">
+                <span className="text-sm font-semibold text-slate-mid">
                   {i + 1}
                 </span>
               )}
             </div>
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-medium text-slate-900">
+              <p className="truncate text-sm font-medium text-charcoal-ink">
                 {row.primary}
               </p>
-              <p className="truncate text-xs text-slate-500">
+              <p className="truncate text-xs text-slate-mid">
                 {row.secondary} · ตรงเวลา {row.onTimeRate}%
               </p>
             </div>
             <div className="shrink-0 text-right">
-              <p className="text-sm font-semibold text-blue-600">
+              <p className="text-sm font-semibold text-action-blue">
                 {formatNumber(row.score)}
               </p>
-              <p className="text-xs text-slate-400">คะแนน</p>
+              <p className="text-xs text-slate-mid">คะแนน</p>
             </div>
           </li>
         ))}
@@ -383,25 +383,25 @@ export default function OverviewPage() {
           />
           <div className="p-5">
             <div className="grid grid-cols-2 gap-3">
-              <div className="rounded-xl bg-slate-50 p-3">
-                <div className="flex items-center gap-2 text-slate-500">
+              <div className="rounded-inputs bg-bone p-3">
+                <div className="flex items-center gap-2 text-slate-mid">
                   <Container className="h-4 w-4" />
                   <span className="text-xs">ตู้รอดำเนินการ</span>
                 </div>
-                <p className="mt-1 text-2xl font-semibold text-slate-900">
+                <p className="mt-1 text-2xl font-semibold text-charcoal-ink">
                   {formatNumber(stats.containerWaiting)}
                 </p>
-                <p className="text-xs text-slate-500">รอเริ่มงาน/มอบหมายแล้ว</p>
+                <p className="text-xs text-slate-mid">รอเริ่มงาน/มอบหมายแล้ว</p>
               </div>
-              <div className="rounded-xl bg-sky-50 p-3">
+              <div className="rounded-inputs bg-sky-50 p-3">
                 <div className="flex items-center gap-2 text-sky-600">
                   <Forklift className="h-4 w-4" />
                   <span className="text-xs">กำลังโหลด</span>
                 </div>
-                <p className="mt-1 text-2xl font-semibold text-slate-900">
+                <p className="mt-1 text-2xl font-semibold text-charcoal-ink">
                   {formatNumber(stats.containerLoading)}
                 </p>
-                <p className="text-xs text-slate-500">กำลังดำเนินการขนส่ง</p>
+                <p className="text-xs text-slate-mid">กำลังดำเนินการขนส่ง</p>
               </div>
             </div>
             <div className="mt-4">
@@ -418,7 +418,7 @@ export default function OverviewPage() {
             action={
               <Link
                 href="/transport/demo/depot"
-                className="text-sm font-medium text-blue-600 hover:text-blue-700"
+                className="text-sm font-medium text-action-blue hover:text-focus-blue"
               >
                 ดูผัง Depot
               </Link>
@@ -433,15 +433,15 @@ export default function OverviewPage() {
                 <div key={depot.id}>
                   <div className="flex items-baseline justify-between gap-2">
                     <div className="min-w-0">
-                      <p className="truncate text-sm font-medium text-slate-900">
+                      <p className="truncate text-sm font-medium text-charcoal-ink">
                         {depot.name}
                       </p>
-                      <p className="text-xs text-slate-500">
+                      <p className="text-xs text-slate-mid">
                         {depot.province} · รถประจำ{" "}
                         {formatNumber(vehiclesInDepot)} คัน
                       </p>
                     </div>
-                    <p className="shrink-0 text-sm font-semibold text-slate-900">
+                    <p className="shrink-0 text-sm font-semibold text-charcoal-ink">
                       {depot.utilization}%
                     </p>
                   </div>
@@ -453,7 +453,7 @@ export default function OverviewPage() {
                 </div>
               );
             })}
-            <p className="border-t border-slate-100 pt-3 text-xs text-slate-400">
+            <p className="border-t border-hairline pt-3 text-xs text-slate-mid">
               พื้นที่ใช้งานตั้งแต่ 70% ขึ้นไปถือว่าเริ่มหนาแน่น
               ควรวางแผนทอยตู้ล่วงหน้า
             </p>
@@ -468,7 +468,7 @@ export default function OverviewPage() {
           />
           <div className="p-5">
             <HourlyJobsChart data={hourlyData} />
-            <p className="mt-3 text-xs text-slate-400">
+            <p className="mt-3 text-xs text-slate-mid">
               ช่วงเช้า 06:00–12:00 น. เป็นช่วงที่มีงานหนาแน่นที่สุดของวัน
             </p>
           </div>
@@ -485,7 +485,7 @@ export default function OverviewPage() {
             action={
               <Link
                 href="/transport/demo/jobs"
-                className="text-sm font-medium text-blue-600 hover:text-blue-700"
+                className="text-sm font-medium text-action-blue hover:text-focus-blue"
               >
                 ดูทั้งหมด
               </Link>
@@ -505,25 +505,25 @@ export default function OverviewPage() {
             <TBody>
               {followUps.length === 0 ? (
                 <TR>
-                  <TD colSpan={6} align="center" className="text-slate-500">
+                  <TD colSpan={6} align="center" className="text-slate-mid">
                     ไม่มีงานที่ต้องติดตามในตอนนี้
                   </TD>
                 </TR>
               ) : (
                 followUps.map((job) => (
                   <TR key={job.id}>
-                    <TD className="font-medium text-slate-900">{job.jobNo}</TD>
+                    <TD className="font-medium text-charcoal-ink">{job.jobNo}</TD>
                     <TD>
                       <Badge tone={JOB_TYPE_TONE[job.type]}>
                         {JOB_TYPE_LABEL[job.type]}
                       </Badge>
                     </TD>
-                    <TD className="text-slate-600">
+                    <TD className="text-slate-mid">
                       <div className="max-w-[180px] truncate" title={job.customer}>
                         {job.customer}
                       </div>
                     </TD>
-                    <TD className="whitespace-nowrap text-slate-600">
+                    <TD className="whitespace-nowrap text-slate-mid">
                       {formatThaiDateTime(job.appointmentTime)}
                     </TD>
                     <TD>
@@ -538,7 +538,7 @@ export default function OverviewPage() {
                         )}
                       </div>
                     </TD>
-                    <TD className="text-slate-500">
+                    <TD className="text-slate-mid">
                       <div
                         className="max-w-[220px] truncate"
                         title={job.problem ?? job.note ?? "-"}
@@ -586,18 +586,18 @@ export default function OverviewPage() {
           <Link
             key={shortcut.href}
             href={shortcut.href}
-            className="group flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
+            className="group flex items-center gap-3 rounded-cards border border-hairline bg-white p-4 shadow-card transition-colors hover:border-deep-charcoal"
           >
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-inputs bg-info-wash text-action-blue">
               <shortcut.icon className="h-5 w-5" />
             </div>
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-medium text-slate-900">
+              <p className="truncate text-sm font-medium text-charcoal-ink">
                 {shortcut.label}
               </p>
-              <p className="truncate text-xs text-slate-500">{shortcut.desc}</p>
+              <p className="truncate text-xs text-slate-mid">{shortcut.desc}</p>
             </div>
-            <ArrowRight className="h-4 w-4 shrink-0 text-slate-300 transition-colors group-hover:text-blue-600" />
+            <ArrowRight className="h-4 w-4 shrink-0 text-hairline transition-colors group-hover:text-action-blue" />
           </Link>
         ))}
       </div>

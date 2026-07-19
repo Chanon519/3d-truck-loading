@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -18,6 +19,7 @@ import {
   X,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import { Toaster } from "@/components/ui/toast";
 
 interface NavItem {
@@ -101,22 +103,29 @@ function SidebarContent({
   return (
     <div className="flex h-full flex-col">
       {/* โลโก้ */}
-      <div className="flex items-center gap-3 border-b border-hairline px-4 py-4">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-inputs bg-logo-violet text-white">
-          <Truck className="h-[18px] w-[18px]" />
-        </div>
-        <div className="min-w-0">
-          <p className="text-sm font-semibold tracking-tight text-charcoal-ink">
-            TMS Demo
-          </p>
-          <p className="truncate text-[11px] text-slate-mid">
+      <Link
+        href="/transport/demo"
+        onClick={onNavigate}
+        className="flex flex-col items-start gap-3 border-b border-hairline px-5 py-5 transition-opacity hover:opacity-80"
+      >
+        <Image
+          src="/compattana-logo.png"
+          alt="Compattana"
+          width={2416}
+          height={654}
+          priority
+          className="h-7 w-auto"
+        />
+        <div className="flex items-center gap-2">
+          <Badge tone="violet">TMS</Badge>
+          <span className="truncate text-[11px] text-slate-mid">
             ระบบบริหารงานขนส่ง
-          </p>
+          </span>
         </div>
-      </div>
+      </Link>
 
       {/* เมนู */}
-      <nav className="thin-scrollbar flex-1 overflow-y-auto px-3 py-4">
+      <nav className="thin-scrollbar flex-1 overflow-y-auto px-3 py-5">
         {NAV_GROUPS.map((group) => (
           <div
             key={group.title}
@@ -136,13 +145,13 @@ function SidebarContent({
               {group.featured && <Sparkles className="h-3 w-3" />}
               {group.title}
             </p>
-            <ul className="space-y-0.5">
+            <ul className="space-y-1">
               {group.items.map((item) => {
                 const active = item.exact
                   ? pathname === item.href
                   : pathname.startsWith(item.href);
                 const base =
-                  "flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm transition-colors";
+                  "flex items-center gap-2.5 rounded-secondarybuttons px-3 py-2 text-sm transition-colors";
                 const state = active
                   ? item.featured
                     ? "bg-navy font-semibold text-white"
@@ -194,7 +203,7 @@ export default function TransportDemoLayout({
       </aside>
 
       {/* แถบบนจอเล็ก */}
-      <header className="sticky top-0 z-30 flex items-center gap-3 border-b border-hairline bg-white/95 px-4 py-3 lg:hidden">
+      <header className="sticky top-0 z-30 flex items-center gap-3 border-b border-hairline bg-white/95 px-4 py-3 backdrop-blur-sm lg:hidden">
         <button
           type="button"
           onClick={() => setDrawerOpen(true)}
@@ -203,14 +212,18 @@ export default function TransportDemoLayout({
         >
           <Menu className="h-5 w-5" />
         </button>
-        <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-inputs bg-logo-violet text-white">
-            <Truck className="h-4 w-4" />
-          </div>
+        <Link href="/transport/demo" className="flex items-center gap-2">
+          <Image
+            src="/compattana-icon.png"
+            alt="Compattana"
+            width={591}
+            height={653}
+            className="h-7 w-auto"
+          />
           <span className="text-sm font-semibold tracking-tight text-charcoal-ink">
             TMS Demo
           </span>
-        </div>
+        </Link>
       </header>
 
       {/* Drawer จอเล็ก */}
@@ -241,7 +254,7 @@ export default function TransportDemoLayout({
       {/* เนื้อหาหน้า */}
       <div className="lg:pl-64">
         <main className="min-h-screen">
-          <div className="mx-auto max-w-[1600px] p-4 lg:p-6">{children}</div>
+          <div className="mx-auto max-w-[1600px] p-4 lg:p-8">{children}</div>
         </main>
       </div>
 
