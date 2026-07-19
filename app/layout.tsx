@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Demo ระบบบริหารงานขนส่ง งานตู้คอนเทนเนอร์ Depot Ranking และการวางแผน Optimize",
   icons: {
-    icon: "/compattana-logo.png",
+    icon: "/compattana-icon.png",
   },
 };
 
