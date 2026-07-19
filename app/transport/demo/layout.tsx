@@ -182,6 +182,16 @@ function SidebarContent({
         <div className="rounded-inputs bg-amber-50/80 px-3 py-2 text-center text-xs font-medium text-amber-700">
           โหมด DEMO — ข้อมูลจำลอง
         </div>
+        <div className="mt-2 flex items-center justify-center gap-1.5 text-[10px] text-slate-mid">
+          <Image
+            src="/compattana-icon.png"
+            alt=""
+            width={591}
+            height={653}
+            className="h-3 w-auto opacity-60"
+          />
+          <span>Powered by COMPATTANA</span>
+        </div>
       </div>
     </div>
   );
